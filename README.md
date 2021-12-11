@@ -4,7 +4,9 @@ Anggota kelompok:
 - 05111940000067 - Fika Nur Aini
 - 05111940000095 - Fuad Elhasan Irfani
 - 05111940000203 - Fidhia Ainun Khofifah
+
 ---
+
 ### `(A)` Topologi jaringan
 
 ![image](https://user-images.githubusercontent.com/73324192/145664783-d6b31fca-6697-4fb4-891c-11381597a258.png)
