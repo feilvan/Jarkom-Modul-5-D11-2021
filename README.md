@@ -76,8 +76,10 @@ Anggota kelompok:
 
 - Pada Foosha jalankan konfigurasi iptables berikut `iptables -A FORWARD -i eth0 -p tcp --destination-port 80 -d 192.197.7.131 -j DROP` dan `iptables -A FORWARD -i eth0 -p tcp --destination-port 80 -d 192.197.7.130 -j DROP`. IP Tersebut adalah IP Jipangu (DHCP Server) dan IP Doriki (DNS Server). Tapi kami belum tahu apakah konfigurasi ini benar atau tidak
 
-#### Kendala no. 2
-- Tidak tahu bagaimana cara testingnya apakah iptables bekerja sesuai yang diinginkan atau tidak.
+### ` 3. ` Membatasi DHCP dan DNS Server hanya boleh menerima maksimal 3 koneksi ICMP secara bersamaan menggunakan, selebihnya didrop
+
+- Pada Jipangu (DHCP Server) dan Doriki (DNS Server) tambahkan iptables rule berikut `iptables -A INPUT -p icmp -m connlimit --connlimit-above 3 --connlimit-mask 0 DROP`. Koneksi ICMP akan didrop apabila sudah ada 3 koneksi ICMP bersamaan.
 
 #### Kendala praktikum keseluruhan
+- Tidak tahu bagaimana cara testingnya apakah iptables bekerja sesuai yang diinginkan atau tidak.
 - Kurang paham iptables
