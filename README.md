@@ -102,7 +102,18 @@ iptables -A INPUT -s 192.197.36.0/23 -j REJECT
 iptables -A INPUT -s 192.197.38.0/24 -j REJECT
 ```
 Sehingga akses dari subnet Elena dan Fukuro dibatasi dari 00.00 sampai 06.59 dan dari 15.01 sampai 23.59, dan selain waktu tersebut ditolak.
-### ` 6. `Karena kita memiliki 2 Web Server, Luffy ingin Guanhao disetting sehingga setiap request dari client yang mengakses DNS Server akan didistribusikan secara bergantian pada Jorge dan Maingate
+### ` 6. `Karena kita memiliki 2 Web Server, Luffy ingin Guanhao disetting sehingga setiap request dari client yang mengakses DNS Server akan didistribusikan secara bergantian pada Jorge dan Maingate.
+- Pada Guanhao:
+```
+iptables -A PREROUTING -t nat -p tcp -d 192.197.7.128/29 -m statistic --mode nth --every 2 --packet 0 -j DNAT --to-destination  192.197.7.138
+iptables -A PREROUTING -t nat -p tcp -d 192.197.7.128/29 -j DNAT --to-destination 192.197.7.139
+iptables -t nat -A POSTROUTING -p tcp -d 192.197.7.138 -j SNAT --to-source 192.197.7.128
+iptables -t nat -A POSTROUTING -p tcp -d 192.197.7.139 -j SNAT --to-source 192.197.7.128
+```
+- Pada Jorge & Maingate
+```
+apt-get update
+apt-get install apache2 -y
+```
+Kemudian tambahkan file di /var/www/html/index.html lalu testing dengan curl 192.197.7.128 dari client
 
-#### Kendala praktikum keseluruhan
-- Masih kurang paham untuk soal nomer 6
