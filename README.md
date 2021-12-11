@@ -78,3 +78,4 @@ Anggota kelompok:
 
 Tidak tahu bagaimana cara testingnya apakah iptables bekerja sesuai yang diinginkan atau tidak.
 
+
