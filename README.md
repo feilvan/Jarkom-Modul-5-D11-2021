@@ -90,7 +90,19 @@ iptables -A INPUT -s 192.197.0.0/22 -m time --timestart 07:00 --timestop 15:00 -
 iptables -A INPUT -s 192.197.7.0/25 -j REJECT
 iptables -A INPUT -s 192.197.0.0/22 -j REJECT
 ```
+### ` 5. ` Akses dari subnet Elena dan Fukuro hanya diperbolehkan pada pukul 15.01 hingga pukul 06.59 setiap harinya
+- Pada DNS Server (Doriki) ditambahkan rule berikut.
+```
+iptables -A INPUT -s 192.197.36.0/23 -m time --timestart 00:00 --timestop 06:59 -j ACCEPT
+iptables -A INPUT -s 192.197.36.0/23 -m time --timestart 15:01 --timestop 23:59 -j ACCEPT
+iptables -A INPUT -s 192.197.38.0/24 -m time --timestart 00:00 --timestop 06:59 -j ACCEPT
+iptables -A INPUT -s 192.197.38.0/24 -m time --timestart 15:01 --timestop 23:59 -j ACCEPT
+
+iptables -A INPUT -s 192.197.36.0/23 -j REJECT
+iptables -A INPUT -s 192.197.38.0/24 -j REJECT
+```
+Sehingga akses dari subnet Elena dan Fukuro dibatasi dari 00.00 sampai 06.59 dan dari 15.01 sampai 23.59, dan selain waktu tersebut ditolak.
+### ` 6. `Karena kita memiliki 2 Web Server, Luffy ingin Guanhao disetting sehingga setiap request dari client yang mengakses DNS Server akan didistribusikan secara bergantian pada Jorge dan Maingate
 
 #### Kendala praktikum keseluruhan
-- Tidak tahu bagaimana cara testingnya apakah iptables bekerja sesuai yang diinginkan atau tidak.
-- Kurang paham iptables
+- Masih kurang paham untuk soal nomer 6
