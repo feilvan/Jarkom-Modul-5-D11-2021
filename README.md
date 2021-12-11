@@ -84,7 +84,11 @@ Anggota kelompok:
 
 - Tambahkan rule pada Doriki (DNS Server), sehingga akses selain di waktu berikut akan ditolak.
 `
+iptables -A INPUT -s 192.197.7.0/25 -m time --timestart 07:00 --timestop 15:00 --weekdays Mon,Tue,Wed,Thu -j ACCEPT
+iptables -A INPUT -s 192.197.0.0/22 -m time --timestart 07:00 --timestop 15:00 --weekdays Mon,Tue,Wed,Thu -j ACCEPT
 
+iptables -A INPUT -s 192.197.7.0/25 -j REJECT
+iptables -A INPUT -s 192.197.0.0/22 -j REJECT
 `
 
 #### Kendala praktikum keseluruhan
