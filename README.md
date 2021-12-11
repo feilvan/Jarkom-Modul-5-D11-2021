@@ -74,8 +74,7 @@ Anggota kelompok:
 
 - Pada Foosha jalankan konfigurasi iptables berikut `iptables -A FORWARD -i eth0 -p tcp --destination-port 80 -d 192.197.7.131 -j DROP` dan `iptables -A FORWARD -i eth0 -p tcp --destination-port 80 -d 192.197.7.130 -j DROP`. IP Tersebut adalah IP Jipangu (DHCP Server) dan IP Doriki (DNS Server). Tapi kami belum tahu apakah konfigurasi ini benar atau tidak
 
-#### Kendala
+#### Kendala praktikum
 
-Tidak tahu bagaimana cara testingnya apakah iptables bekerja sesuai yang diinginkan atau tidak.
-
-
+- Kurang paham iptables
+- Tidak tahu bagaimana cara testingnya apakah iptables bekerja sesuai yang diinginkan atau tidak.
