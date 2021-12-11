@@ -80,6 +80,13 @@ Anggota kelompok:
 
 - Pada Jipangu (DHCP Server) dan Doriki (DNS Server) tambahkan iptables rule berikut `iptables -A INPUT -p icmp -m connlimit --connlimit-above 3 --connlimit-mask 0 -j DROP`. Koneksi ICMP akan didrop apabila sudah ada 3 koneksi ICMP bersamaan.
 
+### ` 4. ` Akses subnet Blueno dan Cipher hanya diperbolehkan pada pukul 07.00 - 15.00 pada hari Senin sampai Kamis
+
+- Tambahkan rule pada Doriki (DNS Server), sehingga akses selain di waktu berikut akan ditolak.
+`
+
+`
+
 #### Kendala praktikum keseluruhan
 - Tidak tahu bagaimana cara testingnya apakah iptables bekerja sesuai yang diinginkan atau tidak.
 - Kurang paham iptables
