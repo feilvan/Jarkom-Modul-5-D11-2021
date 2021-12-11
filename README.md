@@ -78,7 +78,7 @@ Anggota kelompok:
 
 ### ` 3. ` Membatasi DHCP dan DNS Server hanya boleh menerima maksimal 3 koneksi ICMP secara bersamaan menggunakan, selebihnya didrop
 
-- Pada Jipangu (DHCP Server) dan Doriki (DNS Server) tambahkan iptables rule berikut `iptables -A INPUT -p icmp -m connlimit --connlimit-above 3 --connlimit-mask 0 DROP`. Koneksi ICMP akan didrop apabila sudah ada 3 koneksi ICMP bersamaan.
+- Pada Jipangu (DHCP Server) dan Doriki (DNS Server) tambahkan iptables rule berikut `iptables -A INPUT -p icmp -m connlimit --connlimit-above 3 --connlimit-mask 0 -j DROP`. Koneksi ICMP akan didrop apabila sudah ada 3 koneksi ICMP bersamaan.
 
 #### Kendala praktikum keseluruhan
 - Tidak tahu bagaimana cara testingnya apakah iptables bekerja sesuai yang diinginkan atau tidak.
